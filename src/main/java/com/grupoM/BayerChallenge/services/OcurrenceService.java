@@ -60,11 +60,11 @@ public class OcurrenceService {
 		try {
 			Ocurrence entity = repository.getReferenceById(id);
 			copyDtoToEntity(dto,entity);
-			entity.getSymptoms().clear();
-			for(SymptomDTO sympDto : dto.getSymptoms()) {
-				Symptom symptom = symptomRepository.getReferenceById(sympDto.getId());
-				entity.getSymptoms().add(symptom);
-			}
+//			entity.getSymptoms().clear();
+//			for(SymptomDTO sympDto : dto.getSymptoms()) {
+//				Symptom symptom = symptomRepository.getReferenceById(sympDto.getId());
+//				entity.getSymptoms().add(symptom);
+//			}
 			entity = repository.save(entity);
 			return new OcurrenceDTO(entity);
 		}

@@ -27,11 +27,11 @@ public class Ocurrence implements Serializable{
 	private Long id;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant moment;
+	private Instant date;
 	
-	@OneToMany
-	@JoinColumn(name = "fk_symptom")
-	private List<Symptom> symptoms = new ArrayList<>();
+	@OneToOne
+	@JoinColumn(name = "symptom_id")
+	private Symptom symptoms;
 	
 	@OneToOne
 	@JoinColumn(name = "disease_id")
@@ -44,7 +44,7 @@ public class Ocurrence implements Serializable{
 	public Ocurrence(Long id, Instant moment, Disease disease) {
 		super();
 		this.id = id;
-		this.moment = moment;
+		this.date = moment;
 		this.disease = disease;
 	}
 
@@ -57,16 +57,16 @@ public class Ocurrence implements Serializable{
 	}
 
 	public Instant getMoment() {
-		return moment;
+		return date;
 	}
 
 	public void setMoment(Instant moment) {
-		this.moment = moment;
+		this.date = moment;
 	}
 
-	public List<Symptom> getSymptoms() {
-		return symptoms;
-	}
+//	public List<Symptom> getSymptoms() {
+//		return symptoms;
+//	}
 
 	public Disease getDisease() {
 		return disease;
@@ -78,7 +78,7 @@ public class Ocurrence implements Serializable{
 	
 	@PrePersist
 	public void prePersist() {
-		moment = Instant.now();
+		date = Instant.now();
 	}
 
 	@Override

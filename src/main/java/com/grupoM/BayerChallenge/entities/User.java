@@ -38,7 +38,7 @@ public class User implements Serializable{
 	private Address address;
 	
 	@OneToMany
-	@JoinColumn(name = "fk_user")
+	@JoinColumn(name = "user_id")
 	private List<Ocurrence> ocurrences = new ArrayList<>();
 
 	public User() {

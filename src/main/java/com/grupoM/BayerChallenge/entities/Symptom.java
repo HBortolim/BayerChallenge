@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -26,10 +27,6 @@ public class Symptom implements Serializable{
 	
 	@ManyToMany(mappedBy = "symptoms")
 	private List<Disease> diseases = new ArrayList<>();
-//	
-//	@ManyToOne
-//	@JoinColumn(name = "symptom_id")
-//	private Ocurrence ocurrence;
 	
 	public Symptom() {
 		

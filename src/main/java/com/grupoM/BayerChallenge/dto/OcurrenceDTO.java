@@ -13,7 +13,7 @@ public class OcurrenceDTO implements Serializable{
 
 	
 	private Long id;
-	private List<SymptomDTO> symptoms = new ArrayList<>();
+	//private List<SymptomDTO> symptoms = new ArrayList<>();
 	private DiseaseDTO disease;
 	
 	public OcurrenceDTO() {
@@ -31,10 +31,10 @@ public class OcurrenceDTO implements Serializable{
 		this.disease = new DiseaseDTO(entity.getDisease());
 	}
 	
-	public OcurrenceDTO(Ocurrence entity, List<Symptom> symptoms) {
-		this(entity);
-		symptoms.forEach(symptom -> this.symptoms.add(new SymptomDTO(symptom)));
-	}
+//	public OcurrenceDTO(Ocurrence entity, List<Symptom> symptoms) {
+//		this(entity);
+//		symptoms.forEach(symptom -> this.symptoms.add(new SymptomDTO(symptom)));
+//	}
 
 	public Long getId() {
 		return id;
@@ -44,14 +44,14 @@ public class OcurrenceDTO implements Serializable{
 		this.id = id;
 	}
 
-	public List<SymptomDTO> getSymptoms() {
-		return symptoms;
-	}
-	
-
-	public void setSymptoms(List<SymptomDTO> symptoms) {
-		this.symptoms = symptoms;
-	}
+//	public List<SymptomDTO> getSymptoms() {
+//		return symptoms;
+//	}
+//	
+//
+//	public void setSymptoms(List<SymptomDTO> symptoms) {
+//		this.symptoms = symptoms;
+//	}
 
 	public DiseaseDTO getDisease() {
 		return disease;
