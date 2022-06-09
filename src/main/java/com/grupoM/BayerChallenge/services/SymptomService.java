@@ -29,6 +29,7 @@ public class SymptomService {
 	@Autowired
 	private DiseaseRepository diseaseRepository;
 	
+	
 	@Transactional(readOnly = true)
 	public Page<SymptomDTO> findAllPaged(PageRequest pageRequest){
 		Page<Symptom> list = repository.findAll(pageRequest);
@@ -76,7 +77,7 @@ public class SymptomService {
 	}
 	private void copyDtoToEntity(SymptomDTO dto, Symptom entity) {
 		
-		entity.setName(dto.getName());		
+		entity.setName(dto.getName());	
 		
 		entity.getDiseases().clear();
 		for(DiseaseDTO diseaseDto : dto.getDiseases()) {

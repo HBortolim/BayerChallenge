@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,15 +24,15 @@ public class Ocurrence implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	//@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	//private Instant moment;
+//	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+//	private Instant moment;
 	
 	@OneToMany
-	@JoinColumn(name = "ocurrence_id",referencedColumnName = "id")
+	@JoinColumn(name = "fk_symptom")
 	private List<Symptom> symptoms = new ArrayList<>();
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn
+	@JoinColumn(name = "disease_id")
 	private Disease disease;
 	
 	public Ocurrence() {
@@ -58,7 +57,7 @@ public class Ocurrence implements Serializable{
 //	public Instant getMoment() {
 //		return moment;
 //	}
-
+//
 //	public void setMoment(Instant moment) {
 //		this.moment = moment;
 //	}
@@ -74,6 +73,11 @@ public class Ocurrence implements Serializable{
 	public void setDisease(Disease disease) {
 		this.disease = disease;
 	}
+	
+//	@PrePersist
+//	public void prePersist() {
+//		moment = Instant.now();
+//	}
 
 	@Override
 	public int hashCode() {

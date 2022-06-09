@@ -44,7 +44,7 @@ public class OcurrenceService {
 	public OcurrenceDTO findById(Long id) {
 		Optional<Ocurrence> obj = repository.findById(id);
 		Ocurrence entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found!"));
-		return new OcurrenceDTO(entity, entity.getSymptoms());
+		return new OcurrenceDTO(entity);
 	}
 
 	@Transactional
@@ -60,6 +60,11 @@ public class OcurrenceService {
 		try {
 			Ocurrence entity = repository.getReferenceById(id);
 			copyDtoToEntity(dto,entity);
+			entity.getSymptoms().clear();
+			for(SymptomDTO sympDto : dto.getSymptoms()) {
+				Symptom symptom = symptomRepository.getReferenceById(sympDto.getId());
+				entity.getSymptoms().add(symptom);
+			}
 			entity = repository.save(entity);
 			return new OcurrenceDTO(entity);
 		}
@@ -82,14 +87,6 @@ public class OcurrenceService {
 	private void copyDtoToEntity(OcurrenceDTO dto, Ocurrence entity) {
 		Disease disease = diseaseRepository.getReferenceById(dto.getDisease().getId());
 		entity.setDisease(disease);
-		//entity.setMoment(dto.getMoment());
-		
-		
-		entity.getSymptoms().clear();
-		for(SymptomDTO symptomDto : dto.getSymptoms()) {
-			Symptom Symptom = symptomRepository.getReferenceById(symptomDto.getId());
-			entity.getSymptoms().add(Symptom);
-		}
 	}
 	
 }

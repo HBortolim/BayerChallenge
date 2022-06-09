@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.grupoM.BayerChallenge.entities.Disease;
+import com.grupoM.BayerChallenge.entities.Ocurrence;
 import com.grupoM.BayerChallenge.entities.Symptom;
 
 public class DiseaseDTO implements Serializable{
@@ -15,23 +16,20 @@ public class DiseaseDTO implements Serializable{
     private String scientificName;
 
     private List<SymptomDTO> symptoms = new ArrayList<>();
-    private OcurrenceDTO ocurrence;
 
     public DiseaseDTO() {
     }
 
-    public DiseaseDTO(Long id, String name, String scientificName,OcurrenceDTO ocurrence) {
+    public DiseaseDTO(Long id, String name, String scientificName) {
         this.id = id;
         this.name = name;
         this.scientificName = scientificName;
-        this.ocurrence = ocurrence;
     }
     
     public DiseaseDTO(Disease entity) {
     	this.id = entity.getId();
         this.name = entity.getName();
         this.scientificName = entity.getScientificName();
-        this.ocurrence = new OcurrenceDTO(entity.getOcurrence());
     }
     
     public DiseaseDTO(Disease entity, List<Symptom> symptoms) {
@@ -65,13 +63,5 @@ public class DiseaseDTO implements Serializable{
 
 	public List<SymptomDTO> getSymptoms() {
 		return symptoms;
-	}
-
-	public OcurrenceDTO getOcurrence() {
-		return ocurrence;
-	}
-
-	public void setOcurrence(OcurrenceDTO ocurrence) {
-		this.ocurrence = ocurrence;
 	}
 }

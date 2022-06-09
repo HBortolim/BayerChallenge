@@ -6,6 +6,7 @@ import java.util.List;
 
 
 import com.grupoM.BayerChallenge.entities.Disease;
+import com.grupoM.BayerChallenge.entities.Ocurrence;
 import com.grupoM.BayerChallenge.entities.Symptom;
 
 public class SymptomDTO implements Serializable{
@@ -58,6 +59,6 @@ public class SymptomDTO implements Serializable{
 	public void setDiseases(List<DiseaseDTO> diseases) {
 		this.diseases = diseases;
 	}
-	
+
 
 }

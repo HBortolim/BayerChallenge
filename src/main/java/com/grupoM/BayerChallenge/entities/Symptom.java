@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -24,6 +26,10 @@ public class Symptom implements Serializable{
 	
 	@ManyToMany(mappedBy = "symptoms")
 	private List<Disease> diseases = new ArrayList<>();
+//	
+//	@ManyToOne
+//	@JoinColumn(name = "symptom_id")
+//	private Ocurrence ocurrence;
 	
 	public Symptom() {
 		
@@ -54,6 +60,14 @@ public class Symptom implements Serializable{
 	public List<Disease> getDiseases() {
 		return diseases;
 	}
+
+//	public Ocurrence getOcurrence() {
+//		return ocurrence;
+//	}
+//
+//	public void setOcurrence(Ocurrence ocurrence) {
+//		this.ocurrence = ocurrence;
+//	}
 
 	@Override
 	public int hashCode() {

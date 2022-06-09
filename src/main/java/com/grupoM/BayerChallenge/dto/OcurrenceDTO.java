@@ -1,7 +1,6 @@
 package com.grupoM.BayerChallenge.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class OcurrenceDTO implements Serializable{
 
 	
 	private Long id;
-	//private Instant moment;
 	private List<SymptomDTO> symptoms = new ArrayList<>();
 	private DiseaseDTO disease;
 	
@@ -22,16 +20,14 @@ public class OcurrenceDTO implements Serializable{
 		
 	}
 
-	public OcurrenceDTO(Long id, Instant moment, DiseaseDTO disease) {
+	public OcurrenceDTO(Long id, DiseaseDTO disease) {
 		super();
 		this.id = id;
-		//this.moment = moment;
 		this.disease = disease;
 	}
 	
 	public OcurrenceDTO(Ocurrence entity) {
 		this.id = entity.getId();
-		//this.moment = entity.getMoment();
 		this.disease = new DiseaseDTO(entity.getDisease());
 	}
 	
@@ -48,16 +44,13 @@ public class OcurrenceDTO implements Serializable{
 		this.id = id;
 	}
 
-//	public Instant getMoment() {
-//		return moment;
-//	}
-//
-//	public void setMoment(Instant moment) {
-//		this.moment = moment;
-//	}
-
 	public List<SymptomDTO> getSymptoms() {
 		return symptoms;
+	}
+	
+
+	public void setSymptoms(List<SymptomDTO> symptoms) {
+		this.symptoms = symptoms;
 	}
 
 	public DiseaseDTO getDisease() {

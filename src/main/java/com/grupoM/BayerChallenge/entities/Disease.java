@@ -33,11 +33,6 @@ public class Disease implements Serializable{
 		inverseJoinColumns = @JoinColumn(name = "id_sintoma")			
 			)
     private List<Symptom> symptoms = new ArrayList<>();
-    
-    @OneToOne()
-    @MapsId
-    @JoinColumn(name = "ocurrence_id")
-    private Ocurrence ocurrence;
 
     public Disease() {
     }
@@ -74,14 +69,6 @@ public class Disease implements Serializable{
 
 	public List<Symptom> getSymptoms() {
 		return symptoms;
-	}
-	
-	public Ocurrence getOcurrence() {
-		return ocurrence;
-	}
-
-	public void setOcurrence(Ocurrence ocurrence) {
-		this.ocurrence = ocurrence;
 	}
 
 	@Override

@@ -13,10 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.grupoM.BayerChallenge.dto.DiseaseDTO;
 import com.grupoM.BayerChallenge.dto.SymptomDTO;
 import com.grupoM.BayerChallenge.entities.Disease;
-import com.grupoM.BayerChallenge.entities.Ocurrence;
 import com.grupoM.BayerChallenge.entities.Symptom;
 import com.grupoM.BayerChallenge.repositories.DiseaseRepository;
-import com.grupoM.BayerChallenge.repositories.OcurrenceRepository;
 import com.grupoM.BayerChallenge.repositories.SymptomRepository;
 import com.grupoM.BayerChallenge.services.exceptions.DatabaseException;
 import com.grupoM.BayerChallenge.services.exceptions.ResourceNotFoundException;
@@ -29,9 +27,6 @@ public class DiseaseService {
 	
 	@Autowired
 	private SymptomRepository symptomRepository;
-	
-	@Autowired
-	private OcurrenceRepository ocurrenceRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<DiseaseDTO> findAllPaged(PageRequest pageRequest){
@@ -82,8 +77,6 @@ public class DiseaseService {
 		
 		entity.setName(dto.getName());
 		entity.setScientificName(dto.getScientificName());
-		Ocurrence ocurrence = ocurrenceRepository.getReferenceById(dto.getOcurrence().getId());
-		entity.setOcurrence(ocurrence);
 		
 		entity.getSymptoms().clear();
 		for(SymptomDTO symptomDto : dto.getSymptoms()) {
