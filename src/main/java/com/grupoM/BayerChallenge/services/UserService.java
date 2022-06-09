@@ -49,7 +49,7 @@ public class UserService {
 		entity.setGender(dto.getGender());
 		entity.setEmail(dto.getEmail());
 		entity.setCpf(dto.getCpf());
-		//entity.setBirthDay(dto.getBirthDay());
+		entity.setBirthDay(dto.getBirthDay());
 		entity = repository.save(entity);
 		return new UserDTO(entity);
 	}
@@ -63,7 +63,7 @@ public class UserService {
 			entity.setGender(dto.getGender());
 			entity.setEmail(dto.getEmail());
 			entity.setCpf(dto.getCpf());
-			//entity.setBirthDay(dto.getBirthDay());			
+			entity.setBirthDay(dto.getBirthDay());			
 			entity.getOcurrences().clear();
 			for(OcurrenceDTO ocuDto : dto.getOcurrences()) {
 				Ocurrence ocurrence = Ocurrencerepository.getReferenceById(ocuDto.getId());

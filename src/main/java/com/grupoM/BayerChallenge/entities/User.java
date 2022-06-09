@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,11 +30,11 @@ public class User implements Serializable{
 	private String email;
 	private String cpf;
 	
-//	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-//	private Instant birthDay;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant birthDay;
 	
-	@OneToOne
-	@JoinColumn(name = "address_id",referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
 	
 	@OneToMany
@@ -51,7 +52,7 @@ public class User implements Serializable{
 		this.gender = gender;
 		this.email = email;
 		this.cpf = cpf;
-		//this.birthDay = birthDay;
+		this.birthDay = birthDay;
 	}
 
 	public Long getId() {
@@ -94,13 +95,13 @@ public class User implements Serializable{
 		this.cpf = cpf;
 	}
 
-//	public Instant getBirthDay() {
-//		return birthDay;
-//	}
+	public Instant getBirthDay() {
+		return birthDay;
+	}
 
-//	public void setBirthDay(Instant birthDay) {
-//		this.birthDay = birthDay;
-//	}
+	public void setBirthDay(Instant birthDay) {
+		this.birthDay = birthDay;
+	}
 
 	public Address getAddress() {
 		return address;

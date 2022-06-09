@@ -3,6 +3,7 @@ package com.grupoM.BayerChallenge.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Address implements Serializable{
 	private String state;
 	private String country;
 	
-	@OneToOne(mappedBy = "address")
+	@OneToOne(mappedBy = "address",cascade = CascadeType.ALL, orphanRemoval = true)
 	private User user;
 	
 	public Address() {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -24,8 +26,8 @@ public class Ocurrence implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-//	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-//	private Instant moment;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant moment;
 	
 	@OneToMany
 	@JoinColumn(name = "fk_symptom")
@@ -42,7 +44,7 @@ public class Ocurrence implements Serializable{
 	public Ocurrence(Long id, Instant moment, Disease disease) {
 		super();
 		this.id = id;
-		//this.moment = moment;
+		this.moment = moment;
 		this.disease = disease;
 	}
 
@@ -54,13 +56,13 @@ public class Ocurrence implements Serializable{
 		this.id = id;
 	}
 
-//	public Instant getMoment() {
-//		return moment;
-//	}
-//
-//	public void setMoment(Instant moment) {
-//		this.moment = moment;
-//	}
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
 
 	public List<Symptom> getSymptoms() {
 		return symptoms;
@@ -74,10 +76,10 @@ public class Ocurrence implements Serializable{
 		this.disease = disease;
 	}
 	
-//	@PrePersist
-//	public void prePersist() {
-//		moment = Instant.now();
-//	}
+	@PrePersist
+	public void prePersist() {
+		moment = Instant.now();
+	}
 
 	@Override
 	public int hashCode() {

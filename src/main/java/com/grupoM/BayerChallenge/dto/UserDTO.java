@@ -16,7 +16,7 @@ public class UserDTO implements Serializable{
 	private String gender;
 	private String email;
 	private String cpf;
-	//private Instant birthDay;
+	private Instant birthDay;
 	private AddressDTO address;
 	private List<OcurrenceDTO> ocurrences = new ArrayList<>();
 
@@ -40,7 +40,7 @@ public class UserDTO implements Serializable{
 		this.gender = entity.getGender();
 		this.email = entity.getEmail();
 		this.cpf = entity.getCpf();
-		//this.birthDay = entity.getBirthDay();
+		this.birthDay = entity.getBirthDay();
 	}
 	
 	public UserDTO(User entity,List<Ocurrence> ocurrences) {
@@ -88,13 +88,13 @@ public class UserDTO implements Serializable{
 		this.cpf = cpf;
 	}
 
-//	public Instant getBirthDay() {
-//		return birthDay;
-//	}
-//
-//	public void setBirthDay(Instant birthDay) {
-//		this.birthDay = birthDay;
-//	}
+	public Instant getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Instant birthDay) {
+		this.birthDay = birthDay;
+	}
 
 	public AddressDTO getAddress() {
 		return address;
