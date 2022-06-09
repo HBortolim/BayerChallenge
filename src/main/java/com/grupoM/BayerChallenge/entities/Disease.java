@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,7 +34,9 @@ public class Disease implements Serializable{
 			)
     private List<Symptom> symptoms = new ArrayList<>();
     
-    @OneToOne(mappedBy="disease")
+    @OneToOne()
+    @MapsId
+    @JoinColumn(name = "ocurrence_id")
     private Ocurrence ocurrence;
 
     public Disease() {

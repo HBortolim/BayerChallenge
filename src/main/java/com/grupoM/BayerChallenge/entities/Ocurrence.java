@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -32,7 +33,7 @@ public class Ocurrence implements Serializable{
 	private List<Symptom> symptoms = new ArrayList<>();
 	
 	@OneToOne
-    @JoinColumn(name="disease_id",referencedColumnName = "id")
+	@PrimaryKeyJoinColumn
 	private Disease disease;
 	
 	public Ocurrence() {
